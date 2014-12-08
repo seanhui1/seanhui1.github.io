@@ -12,7 +12,7 @@ calendar.init({
 	domainGutter: 15,
 	weekStartOnMonday: 0,
 	scale: [10, 20, 30, 40],
-	onClick: function(date, count) {
+	onClick: function(url) {
 		alert("potential game URL here");
 	}
     });
