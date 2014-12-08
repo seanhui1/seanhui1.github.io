@@ -1,6 +1,6 @@
 var calendar = new CalHeatMap();
-calendar
-	data: "datas.json",
+calendar.init({
+       data: "datas.json",
 	start: new Date(2014, 0),
 	id : "graph_k",
 	domain : "month",
@@ -11,5 +11,5 @@ calendar
 	cellradius: 5,
 	domainGutter: 15,
 	weekStartOnMonday: 0,
-	scale: [10, 20, 80, 100]
-});
+	scale: [10, 20, 30, 40]
+    });
