@@ -1,7 +1,7 @@
 var calendar = new CalHeatMap();
 calendar
 	data: "datas.json",
-	start: new Date(2014, 1),
+	start: new Date(2014, 0),
 	id : "graph_k",
 	domain : "month",
 	subDomain : "x_day",
