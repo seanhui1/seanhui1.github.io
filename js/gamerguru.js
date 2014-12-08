@@ -12,7 +12,7 @@ calendar.init({
 	domainGutter: 15,
 	weekStartOnMonday: 0,
 	scale: [10, 20, 30, 40],
-	onClick: function(url) {
-		alert("potential game URL here");
+	onClick: function(date, count) {
+		alert("Oh gosh, " + count + " things occured on " + date.toISOString());
 	}
     });
