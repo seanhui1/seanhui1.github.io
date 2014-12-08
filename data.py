@@ -8,3 +8,4 @@ while offset<3495:
 	data = json.loads(response.read())
 	json.dump(data,f)
 	offset+=100
+#remove nulls
