@@ -118,7 +118,7 @@
                 return "translate(" + d.dx + "," + d.y + ")";
             });
         parentUpdateTransition.select("rect")
-	    })
+	    
             .attr("width", function(d) {
                 return Math.max(0.01, d.dx);
             })
