@@ -59,32 +59,32 @@ Remove comment to apply this style to date with value equal to 0
 
 .cal-heatmap-container .q1
 {
-	background-color: #FF0000;
-	fill: #ff0000
+	background-color: #372049;
+	fill: #372049
 }
 
 .cal-heatmap-container .q2
 {
-	background-color: #ff7b00;
-	fill: #ff7b00
+	background-color: #735873;
+	fill: #735873
 }
 
 .cal-heatmap-container .q3
 {
-	background-color: #fff600;
-	fill: #fff600
+	background-color: #F1BAF3;
+	fill: #F1BAF3
 }
 
 .cal-heatmap-container .q4
 {
-	background-color: #C2FF00;
-	fill: #C2FF00
+	background-color: #FABEFA;
+	fill: #FABEFA
 }
 
 .cal-heatmap-container .q5
 {
-	background-color: #8DFF00;
-	fill: #8DFF00
+	background-color: #FAEEFF;
+	fill: #FAEEFF
 }
 
 .cal-heatmap-container rect.highlight
@@ -144,4 +144,8 @@ Remove comment to apply this style to date with value equal to 0
 	margin-left: -6px;
     border-width: 6px 6px 0;
     border-top-color: #222;
+}
+
+html {
+    background-color: #2A2C2B;
 }

@@ -1,0 +1,53 @@
+#body {
+        overflow: hidden;
+        margin: 0;
+        font-size: 12px;
+        font-family: 'Oswald', sans-serif;
+        z-index: 1;
+        display: block;
+        font-size: 26px;
+        font-weight: 200;
+        text-shadow: 0 1px 0 #fff;
+        overflow: hidden;
+         pointer-events: all;
+        cursor: pointer;
+        stroke: #EEEEEE;
+         display: block;
+        margin: auto;
+         color: #FFFFFF;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        -webkit-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        -moz-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        background: transparent;
+        margin: 2px;
+        white-space: pre;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        -webkit-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        -moz-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+         white-space: pre-wrap;
+        text-align: center;
+        text-overflow: ellipsis;
+         font-size: 10px;
+        cursor: pointer
+    }
+    h1 { 
+        display: block;
+        font-size: 2em;
+        font-family: 'Oswald', sans-serif;
+        margin-top: 0.67em;
+        margin-bottom: 0.67em;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: bold;
+        text-align: center;
+        color: #FFFFFF;
+	}
+	p{
+		text-align: center;
+        font-size: 12px;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 100;
+        color: #FFFFFF;
+	}

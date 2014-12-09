@@ -3,8 +3,8 @@
     var xscale = d3.scale.linear().range([0, chartWidth]);
     var yscale = d3.scale.linear().range([0, chartHeight]);
     var color = d3.scale.linear()
-    .range(['red', 'yellow', 'green']) // or use hex values
-    .domain([60, 75, 100]);
+    .range(['#372049', '#F1BAF3', '#FAEEFF']) // or use hex values
+    .domain([50, 80, 100]);
     var headerHeight = 20;
     var headerColor = "#555555";
     var transitionDuration = 500;
@@ -156,7 +156,7 @@
                 .select(".background")
                 .style("stroke", "#000000")
                 .append("svg:title")
-                .text(function(d) { return d.score; });
+                .text(function(d) { return  d.name + " " +d.score; });
         })
         .on("mouseout", function() {
             d3.select(this)
