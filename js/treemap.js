@@ -124,7 +124,6 @@
             .attr("height", headerHeight)
             .style("fill", headerColor);
         parentUpdateTransition.select(".foreignObject")
-            
             .attr("width", function(d) {
                 return Math.max(0.01, d.dx);
             })
