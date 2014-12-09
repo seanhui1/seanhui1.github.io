@@ -93,7 +93,7 @@
             .append("g")
             .attr("class", "cell parent")
             .on("click", function(d) {
-                zoom(d);
+                //zoom(d);
             });
         parentEnterTransition.append("rect")
             .attr("width", function(d) {
