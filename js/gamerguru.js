@@ -11,5 +11,5 @@ calendar.init({
 	cellradius: 5,
 	domainGutter: 15,
 	weekStartOnMonday: 0,
-	scale: [50, 60, 80, 90],
+	scale: [60, 70, 85, 90],
     });
