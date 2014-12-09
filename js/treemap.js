@@ -29,7 +29,7 @@
         "children": 
             d3.nest()
                 .key(function(d,i){return d.release_month;})
-                .entries(data);
+                .entries(data)
         }
 
         var newDataStr = JSON.stringify(newData);
