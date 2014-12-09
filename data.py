@@ -106,6 +106,7 @@ while offset<100:
 							data["results"][i]["score"] = score
 							#print data["results"][i]["release_date"][5:7]
 							data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
+							data["results"][i]["name"] +="."+platform
 							#print data["results"][i]
 							if(score!=""):
 								gameResults.append(data["results"][i])
@@ -115,6 +116,7 @@ while offset<100:
 						data["results"][i]["score"] = score
 						#print data["results"][i]["release_date"][5:7]
 						data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
+						data["results"][i]["name"] +="."+platform
 						#print data["results"][i]
 						if(score!=""):
 							gameResults.append(data["results"][i])
@@ -138,6 +140,8 @@ while offset<100:
 						data["results"][i]["score"] = score
 						#print data["results"][i]["release_date"][5:7]
 						data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
+						data["results"][i]["name"] +="."+platform
+
 						#print data["results"][i]
 						if(score!=""):
 							gameResults.append(data["results"][i])
