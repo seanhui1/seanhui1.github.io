@@ -148,7 +148,7 @@ while offset<100:
 
 								release = data["results"][i]["release_date"]
 								epoch = calendar.timegm(convertToDateTime(release).timetuple())
-								timeResults[str(epoch)]=score
+								timeResults[str(epoch)]=int(score)
 								gameResults.append(data["results"][i])
 							#otherwise, don't log it into the database, it is scoreless
 					else:
@@ -160,7 +160,7 @@ while offset<100:
 						if(score!="" and (gameName not in uniqueGameNames)):
 							release = data["results"][i]["release_date"]
 							epoch = calendar.timegm(convertToDateTime(release).timetuple())
-							timeResults[str(epoch)]=score
+							timeResults[str(epoch)]=int(score)
 							gameResults.append(data["results"][i])
 
 			else:
@@ -189,7 +189,7 @@ while offset<100:
 						if(score!="" and (gameName not in uniqueGameNames)):
 							release = data["results"][i]["release_date"]
 							epoch = calendar.timegm(convertToDateTime(release).timetuple())
-							timeResults[str(epoch)]=score
+							timeResults[str(epoch)]=int(score)
 							timeResults[str(calendar.timegm(convertToDateTime(data["results"][i]["release_date"]).timetuple()))] = score
 							gameResults.append(data["results"][i])
 						#otherwise, don't log it into the database, it is scoreless
