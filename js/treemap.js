@@ -97,7 +97,7 @@
             });
         parentEnterTransition.append("rect")
             .on("click", function(d) {
-                zoom(d);
+                zoom(root);
             })
             .attr("width", function(d) {
                 return Math.max(0.01, d.dx);
