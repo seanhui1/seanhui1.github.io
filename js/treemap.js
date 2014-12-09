@@ -23,7 +23,13 @@
         .attr("height", chartHeight)
         .append("svg:g");
 
-    d3.json("data/flare.json", function(data) {
+    d3.json("data/games.json", function(data) {
+        var newData = d3.nest()
+        .key(function(d,i){return d.release_month;})
+        .entries(data);
+
+        console.log(newData);
+        
         node = root = data;
         var nodes = treemap.nodes(root);
 
