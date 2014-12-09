@@ -11,8 +11,5 @@ calendar.init({
 	cellradius: 5,
 	domainGutter: 15,
 	weekStartOnMonday: 0,
-	scale: [10, 20, 30, 40],
-	onClick: function(date, count) {
-		alert("Oh gosh, " + count + " things occured on " + date.toISOString());
-	}
+	scale: [50, 60, 80, 90],
     });
