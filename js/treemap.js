@@ -2,7 +2,9 @@
     var chartHeight = 550;
     var xscale = d3.scale.linear().range([0, chartWidth]);
     var yscale = d3.scale.linear().range([0, chartHeight]);
-    var color = d3.scale.category10();
+    var color = d3.scale.linear()
+    .range(['lightgreen', 'darkgreen']) // or use hex values
+    .domain([0, 100]);
     var headerHeight = 20;
     var headerColor = "#555555";
     var transitionDuration = 500;
@@ -112,7 +114,7 @@
         childEnterTransition.append("rect")
             .classed("background", true)
             .style("fill", function(d) {
-                return color(d.parent.name);
+                return color(d.score);
             });
         childEnterTransition.append('foreignObject')
             .attr("class", "foreignObject")
@@ -148,7 +150,7 @@
                 return d.dy;
             })
             .style("fill", function(d) {
-                return color(d.parent.name);
+                return color(d.score);
             });
         childUpdateTransition.select(".foreignObject")
             .attr("width", function(d) {
@@ -246,7 +248,7 @@
                         })
                         .select(".foreignObject .labelbody .label")
                         .style("color", function(d) {
-                            return idealTextColor(color(d.parent.name));
+                            return idealTextColor(color(d.score));
                         });
 
                    
@@ -281,7 +283,7 @@
                 return d.children ? headerHeight : Math.max(0.01, ky * d.dy);
             })
             .style("fill", function(d) {
-                return d.children ? headerColor : color(d.parent.name);
+                return d.children ? headerColor : color(d.score);
             });
 
         node = d;
