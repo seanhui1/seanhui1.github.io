@@ -93,7 +93,7 @@
             .append("g")
             .attr("class", "cell parent")
             .on("click", function(d) {
-                zoom(d);
+                zoom(node === d.parent ? root : d.parent);
             });
         parentEnterTransition.append("rect")
             .attr("width", function(d) {
@@ -102,6 +102,9 @@
             .attr("height", headerHeight)
             .style("fill", headerColor);
         parentEnterTransition.append('foreignObject')
+            .on("click", function(d) {
+                zoom(node === d.parent ? root : d.parent);
+            })
             .attr("class", "foreignObject")
             .append("xhtml:body")
             .attr("class", "labelbody")
@@ -120,9 +123,7 @@
             .attr("height", headerHeight)
             .style("fill", headerColor);
         parentUpdateTransition.select(".foreignObject")
-            .on("click", function(d) {
-                zoom(d);
-            })
+            
             .attr("width", function(d) {
                 return Math.max(0.01, d.dx);
             })
