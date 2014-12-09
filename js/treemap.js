@@ -118,6 +118,9 @@
                 return "translate(" + d.dx + "," + d.y + ")";
             });
         parentUpdateTransition.select("rect")
+	    .on("click", function(d) {
+	        zoom(root);
+	    })
             .attr("width", function(d) {
                 return Math.max(0.01, d.dx);
             })
@@ -147,7 +150,7 @@
             .append("g")
             .attr("class", "cell child")
             .on("click", function(d) {
-                //zoom(node === d.parent ? root : d.parent);
+                zoom(d.parent);
             })
             .on("mouseover", function() {
             this.parentNode.appendChild(this); // workaround for bringing elements to the front (ie z-index)
