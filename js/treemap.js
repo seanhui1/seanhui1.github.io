@@ -28,8 +28,10 @@
         .key(function(d,i){return d.release_month;})
         .entries(data);
 
-        console.log(newData);
-        
+        var newDataStr = JSON.stringify(newData);
+        newDataStr = newDataStr.replace("key", "name");
+        newDataStr = newDataStr.replace("values", "children")
+        console.log(newDataStr);
         node = root = data;
         var nodes = treemap.nodes(root);
 
