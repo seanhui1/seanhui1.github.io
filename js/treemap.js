@@ -96,15 +96,16 @@
                 zoom(d);
             });
         parentEnterTransition.append("rect")
+            .on("click", function(d) {
+                zoom(node === d.parent ? root : d.parent);
+            })
             .attr("width", function(d) {
                 return Math.max(0.01, d.dx);
             })
             .attr("height", headerHeight)
             .style("fill", headerColor);
         parentEnterTransition.append('foreignObject')
-            .on("click", function(d) {
-                zoom(node === d.parent ? root : d.parent);
-            })
+            
             .attr("class", "foreignObject")
             .append("xhtml:body")
             .attr("class", "labelbody")
