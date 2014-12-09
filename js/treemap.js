@@ -3,8 +3,8 @@
     var xscale = d3.scale.linear().range([0, chartWidth]);
     var yscale = d3.scale.linear().range([0, chartHeight]);
     var color = d3.scale.linear()
-    .range(['lightgreen', 'darkgreen']) // or use hex values
-    .domain([0, 100]);
+    .range(['red', 'yellow', 'green']) // or use hex values
+    .domain([0, 70, 100]);
     var headerHeight = 20;
     var headerColor = "#555555";
     var transitionDuration = 500;
