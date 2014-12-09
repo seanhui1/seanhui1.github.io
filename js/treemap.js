@@ -182,8 +182,7 @@
                
                 var win = window.open(d.url, '_blank');
                 win.focus();
-            };
-
+            }.
             childEnterTransition.selectAll(".foreignObject")
                 .style("display", "none");
         
