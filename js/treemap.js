@@ -167,15 +167,16 @@
             });
         childEnterTransition.append('foreignObject')
             .attr("class", "foreignObject")
+            .on("click", function(d) {
+               
+                var win = window.open(d.url, '_blank');
+                win.focus();
+            })
             .attr("width", function(d) {
                 return Math.max(0.01, d.dx);
             })
             .attr("height", function(d) {
                 return Math.max(0.01, d.dy);
-            }).on("click", function(d) {
-               
-                var win = window.open(d.url, '_blank');
-                win.focus();
             })
             .append("xhtml:body")
             .attr("class", "labelbody")
