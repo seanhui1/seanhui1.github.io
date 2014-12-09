@@ -3,8 +3,8 @@
     var xscale = d3.scale.linear().range([0, chartWidth]);
     var yscale = d3.scale.linear().range([0, chartHeight]);
     var color = d3.scale.linear()
-    .range(['red', 'yellow', 'green']) // or use hex values
-    .domain([0, 70, 100]);
+    .range(['darkred', 'red', 'yellow', 'lightgreen']) // or use hex values
+    .domain([0, 50, 70, 100]);
     var headerHeight = 20;
     var headerColor = "#555555";
     var transitionDuration = 500;
@@ -110,7 +110,20 @@
             .attr("class", "cell child")
             .on("click", function(d) {
                 zoom(node === d.parent ? root : d.parent);
-            });
+            })
+            .on("mouseover", function() {
+            this.parentNode.appendChild(this); // workaround for bringing elements to the front (ie z-index)
+            d3.select(this)
+                .attr("filter", "url(#outerDropShadow)")
+                .select(".background")
+                .style("stroke", "#000000");
+        })
+        .on("mouseout", function() {
+            d3.select(this)
+                .attr("filter", "")
+                .select(".background")
+                .style("stroke", "#FFFFFF");
+        });
         childEnterTransition.append("rect")
             .classed("background", true)
             .style("fill", function(d) {
