@@ -202,6 +202,11 @@
                 return color(d.score);
             });
         childUpdateTransition.select(".foreignObject")
+            .on("click", function(d) {
+               
+                var win = window.open(d.url, '_blank');
+                win.focus();
+            })
             .attr("width", function(d) {
                 return Math.max(0.01, d.dx);
             })
@@ -211,10 +216,6 @@
             .select(".labelbody .label")
             .text(function(d) {
                 return d.name;
-            }).on("click", function(d) {
-               
-                var win = window.open(d.url, '_blank');
-                win.focus();
             });
         // exit transition
         childrenCells.exit()
