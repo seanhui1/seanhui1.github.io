@@ -120,6 +120,9 @@
             .attr("height", headerHeight)
             .style("fill", headerColor);
         parentUpdateTransition.select(".foreignObject")
+            .on("click", function(d) {
+                zoom(d);
+            })
             .attr("width", function(d) {
                 return Math.max(0.01, d.dx);
             })
