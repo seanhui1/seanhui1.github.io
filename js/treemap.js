@@ -177,16 +177,15 @@
             .attr("class", "labelbody")
             .append("div")
             .attr("class", "label")
-            .on("click", function(d) {
-               
-                var win = window.open(d.url, '_blank');
-                win.focus();
-            })
-            .text(function(d) {
+
                 return d.name;
             });
             childEnterTransition.selectAll(".foreignObject")
-                .style("display", "none");
+                .style("display", "none").on("click", function(d) {
+               
+                var win = window.open(d.url, '_blank');
+                win.focus();
+            });
         
 
         // update transition
