@@ -1,4 +1,4 @@
-    var chartWidth = 550;
+    var chartWidth = 750;
     var chartHeight = 550;
     var xscale = d3.scale.linear().range([0, chartWidth]);
     var yscale = d3.scale.linear().range([0, chartHeight]);

@@ -5,7 +5,7 @@ calendar.init({
 	id : "graph_k",
 	domain : "month",
 	subDomain : "x_day",
-	legend: [40, 60, 80, 90],
+	legend: [60, 70, 80, 90],
 	range : 12,
 	cellsize: 15,
 	cellpadding: 3,
