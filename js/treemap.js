@@ -172,20 +172,20 @@
             })
             .attr("height", function(d) {
                 return Math.max(0.01, d.dy);
+            }).on("click", function(d) {
+               
+                var win = window.open(d.url, '_blank');
+                win.focus();
             })
             .append("xhtml:body")
             .attr("class", "labelbody")
             .append("div")
             .attr("class", "label")
-
+            .text(function(d) {
                 return d.name;
             });
             childEnterTransition.selectAll(".foreignObject")
-                .style("display", "none").on("click", function(d) {
-               
-                var win = window.open(d.url, '_blank');
-                win.focus();
-            });
+                .style("display", "none");
         
 
         // update transition
