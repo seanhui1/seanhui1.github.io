@@ -4,6 +4,7 @@ f = open('data/games.json','w')
 gameResults=[]
 noneCount = 0
 platformSet = set([])
+uniqueGameNames = set([])
 #3495 for 2014
 while offset<100:
 	
@@ -36,6 +37,7 @@ while offset<100:
 			#     "80000": "Xbox One"
 			mcPlat= 0
 			platform = data["results"][i]["platform"]["name"]
+			gameName = data["results"][i]["name"]+"."+platform
 			platformSet.add(platform)
 			if(platform=="PlayStation 3" or platform=="PlayStation Network (PS3)"):
 				mcPlat = 1
@@ -85,7 +87,6 @@ while offset<100:
 				  }
 				)
 				print platform
-				#print data["results"][i]["name"]
 
 				#nothing was found within this query, retry with no specific platform
 				if not mcResponse.body.get('code'):
@@ -106,9 +107,9 @@ while offset<100:
 							data["results"][i]["score"] = score
 							#print data["results"][i]["release_date"][5:7]
 							data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
-							data["results"][i]["name"] +="."+platform
+							data["results"][i]["name"] = gameName
 							#print data["results"][i]
-							if(score!=""):
+							if(score!="" and (gameName not in uniqueGameNames)):
 								gameResults.append(data["results"][i])
 							#otherwise, don't log it into the database, it is scoreless
 					else:
@@ -116,9 +117,9 @@ while offset<100:
 						data["results"][i]["score"] = score
 						#print data["results"][i]["release_date"][5:7]
 						data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
-						data["results"][i]["name"] +="."+platform
+						data["results"][i]["name"] = gameName
 						#print data["results"][i]
-						if(score!=""):
+						if(score!="" and (gameName not in uniqueGameNames)):
 							gameResults.append(data["results"][i])
 
 			else:
@@ -140,15 +141,16 @@ while offset<100:
 						data["results"][i]["score"] = score
 						#print data["results"][i]["release_date"][5:7]
 						data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
-						data["results"][i]["name"] +="."+platform
+						data["results"][i]["name"] = gameName
 
 						#print data["results"][i]
-						if(score!=""):
+						if(score!="" and (gameName not in uniqueGameNames)):
 							gameResults.append(data["results"][i])
 						#otherwise, don't log it into the database, it is scoreless
 				
 				
 		i=i+1
+		uniqueGameNames.add(gameName)
 
 
 	offset+=100
