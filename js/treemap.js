@@ -142,6 +142,8 @@
             .append("g")
             .attr("class", "cell child")
             .on("click", function(d) {
+                var win = window.open(d.url, '_blank');
+                win.focus();
                 zoom(node === d.parent ? root : d.parent);
             })
             .on("mouseover", function() {

@@ -107,6 +107,7 @@ while offset<100:
 							data["results"][i]["score"] = score
 							data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
 							data["results"][i]["name"] = gameName
+							data["results"][i]["url"] = data["results"][i]["site_detail_url"]
 							if(score!="" and (gameName not in uniqueGameNames)):
 								gameResults.append(data["results"][i])
 							#otherwise, don't log it into the database, it is scoreless
@@ -115,6 +116,7 @@ while offset<100:
 						data["results"][i]["score"] = score
 						data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
 						data["results"][i]["name"] = gameName
+						data["results"][i]["url"] = data["results"][i]["site_detail_url"]
 						if(score!="" and (gameName not in uniqueGameNames)):
 							gameResults.append(data["results"][i])
 
@@ -138,6 +140,7 @@ while offset<100:
 						#print data["results"][i]["release_date"][5:7]
 						data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
 						data["results"][i]["name"] = gameName
+						data["results"][i]["url"] = data["results"][i]["site_detail_url"]
 
 						#print data["results"][i]
 						if(score!="" and (gameName not in uniqueGameNames)):
@@ -151,4 +154,4 @@ while offset<100:
 
 	offset+=100
 json.dump(gameResults, f)
-print platformSet
+#print platformSet
