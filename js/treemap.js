@@ -159,6 +159,7 @@
                 .select(".background")
                 .style("stroke", "#FFFFFF");
         });
+
         childEnterTransition.append("rect")
             .classed("background", true)
             .style("fill", function(d) {
@@ -176,13 +177,14 @@
             .attr("class", "labelbody")
             .append("div")
             .attr("class", "label")
-            .text(function(d) {
-                return d.name;
-            }.on("click", function(d) {
+            .on("click", function(d) {
                
                 var win = window.open(d.url, '_blank');
                 win.focus();
-            }));
+            })
+            .text(function(d) {
+                return d.name;
+            });
             childEnterTransition.selectAll(".foreignObject")
                 .style("display", "none");
         
