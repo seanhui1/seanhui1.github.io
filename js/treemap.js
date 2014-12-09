@@ -229,7 +229,7 @@
 
 
         zoom(node);
-    });
+    };
 
 
     function size(d) {
