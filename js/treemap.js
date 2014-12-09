@@ -142,7 +142,7 @@
             .append("g")
             .attr("class", "cell child")
             .on("click", function(d) {
-                if(node != root{
+                if(node != root){
                     var win = window.open(d.url, '_blank');
                     win.focus();
                 }
