@@ -3,8 +3,8 @@
     var xscale = d3.scale.linear().range([0, chartWidth]);
     var yscale = d3.scale.linear().range([0, chartHeight]);
     var color = d3.scale.linear()
-    .range(['darkred', 'yellow', 'lightgreen']) // or use hex values
-    .domain([0, 70, 100]);
+    .range(['red', 'yellow', 'green']) // or use hex values
+    .domain([60, 75, 100]);
     var headerHeight = 20;
     var headerColor = "#555555";
     var transitionDuration = 500;
@@ -19,11 +19,44 @@
             return d.score;
         });
 
-    var chart = d3.select("#body")
+    var svg = d3.select("#body")
         .append("svg:svg")
         .attr("width", chartWidth)
-        .attr("height", chartHeight)
-        .append("svg:g");
+        .attr("height", chartHeight);
+
+    var chart = svg.append("svg:g");
+
+    var defs = svg.append("defs");
+
+    var filter = defs.append("svg:filter")
+        .attr("id", "outerDropShadow")
+        .attr("x", "-20%")
+        .attr("y", "-20%")
+        .attr("width", "140%")
+        .attr("height", "140%");
+
+    filter.append("svg:feOffset")
+        .attr("result", "offOut")
+        .attr("in", "SourceGraphic")
+        .attr("dx", "1")
+        .attr("dy", "1");
+
+    filter.append("svg:feColorMatrix")
+        .attr("result", "matrixOut")
+        .attr("in", "offOut")
+        .attr("type", "matrix")
+        .attr("values", "1 0 0 0 0 0 0.1 0 0 0 0 0 0.1 0 0 0 0 0 .5 0");
+
+    filter.append("svg:feGaussianBlur")
+        .attr("result", "blurOut")
+        .attr("in", "matrixOut")
+        .attr("stdDeviation", "3");
+
+    filter.append("svg:feBlend")
+        .attr("in", "SourceGraphic")
+        .attr("in2", "blurOut")
+        .attr("mode", "normal");
+
 
     d3.json("data/games.json", function(data) {
         var newData = {
