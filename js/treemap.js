@@ -156,7 +156,9 @@
                 .attr("filter", "")
                 .select(".background")
                 .style("stroke", "#FFFFFF");
-        });
+        })
+        .append("svg:title")
+        .text(function(d) { return d.score; });
         childEnterTransition.append("rect")
             .classed("background", true)
             .style("fill", function(d) {

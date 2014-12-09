@@ -8,7 +8,7 @@ uniqueGameNames = set([])
 #3495 for 2014
 while offset<100:
 	
-	url = "https://www.giantbomb.com/api/releases/?api_key=7e672687f183619ce64402ae075d3c63173c5c5e&format=json&offset="+str(offset)+"&field_list=name,release_date,genre,platform&filter=release_date:2014-01-01%2000:00:00|2014-12-31%2000:00:00"
+	url = "https://www.giantbomb.com/api/releases/?api_key=7e672687f183619ce64402ae075d3c63173c5c5e&format=json&offset="+str(offset)+"&field_list=name,release_date,site_detail_url,genre,platform&filter=release_date:2014-01-01%2000:00:00|2014-12-31%2000:00:00"
 	response = urllib.urlopen(url)
 	data = json.loads(response.read())
 
@@ -105,20 +105,16 @@ while offset<100:
 						if(mcResponse2.body['count']!=0):
 							score= mcResponse2.body["results"][0]['score']
 							data["results"][i]["score"] = score
-							#print data["results"][i]["release_date"][5:7]
 							data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
 							data["results"][i]["name"] = gameName
-							#print data["results"][i]
 							if(score!="" and (gameName not in uniqueGameNames)):
 								gameResults.append(data["results"][i])
 							#otherwise, don't log it into the database, it is scoreless
 					else:
 						score= mcResponse.body["results"][0]["score"]
 						data["results"][i]["score"] = score
-						#print data["results"][i]["release_date"][5:7]
 						data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
 						data["results"][i]["name"] = gameName
-						#print data["results"][i]
 						if(score!="" and (gameName not in uniqueGameNames)):
 							gameResults.append(data["results"][i])
 
