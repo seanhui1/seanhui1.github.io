@@ -1,7 +1,43 @@
-import urllib, json, unirest
+import urllib, json, unirest, datetime, calendar
+def convertToDateTime(date_str):
+	#2014-10-16 00:00:00
+	year=date_str[0:4]
+	month = date_str[5:7]
+	day = date_str[8:10]
+	print date_str
+	return datetime.datetime(int(year), int(month), int(day), 0, 0)
+
+def monthStr(month_int):
+	month = int(month_int)
+	if(month==1):
+		return "January"
+	elif(month==2):
+		return "February"
+	elif(month==3):
+		return "March"
+	elif(month==4):
+		return "April"
+	elif(month==5):
+		return "May"
+	elif(month==6):
+		return "June"
+	elif(month==7):
+		return "July"
+	elif(month==8):
+		return "August"
+	elif(month==9):
+		return "September"
+	elif(month==10):
+		return "October"
+	elif(month==11):
+		return "November"
+	elif(month==12):
+		return "December"
 offset = 0
 f = open('data/games.json','w')
+f2 = open('data/datas.json', 'w')
 gameResults=[]
+timeResults={}
 noneCount = 0
 platformSet = set([])
 uniqueGameNames = set([])
@@ -105,19 +141,26 @@ while offset<100:
 						if(mcResponse2.body['count']!=0):
 							score= mcResponse2.body["results"][0]['score']
 							data["results"][i]["score"] = score
-							data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
+							data["results"][i]["release_month"] = monthStr(data["results"][i]["release_date"][5:7])
 							data["results"][i]["name"] = gameName
 							data["results"][i]["url"] = data["results"][i]["site_detail_url"]
 							if(score!="" and (gameName not in uniqueGameNames)):
+
+								release = data["results"][i]["release_date"]
+								epoch = calendar.timegm(convertToDateTime(release).timetuple())
+								timeResults[str(epoch)]=score
 								gameResults.append(data["results"][i])
 							#otherwise, don't log it into the database, it is scoreless
 					else:
 						score= mcResponse.body["results"][0]["score"]
 						data["results"][i]["score"] = score
-						data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
+						data["results"][i]["release_month"] = monthStr(data["results"][i]["release_date"][5:7])
 						data["results"][i]["name"] = gameName
 						data["results"][i]["url"] = data["results"][i]["site_detail_url"]
 						if(score!="" and (gameName not in uniqueGameNames)):
+							release = data["results"][i]["release_date"]
+							epoch = calendar.timegm(convertToDateTime(release).timetuple())
+							timeResults[str(epoch)]=score
 							gameResults.append(data["results"][i])
 
 			else:
@@ -138,12 +181,16 @@ while offset<100:
 						score= mcResponse.body["results"][0]["score"]
 						data["results"][i]["score"] = score
 						#print data["results"][i]["release_date"][5:7]
-						data["results"][i]["release_month"] = data["results"][i]["release_date"][5:7]
+						data["results"][i]["release_month"] = monthStr(data["results"][i]["release_date"][5:7])
 						data["results"][i]["name"] = gameName
 						data["results"][i]["url"] = data["results"][i]["site_detail_url"]
 
 						#print data["results"][i]
 						if(score!="" and (gameName not in uniqueGameNames)):
+							release = data["results"][i]["release_date"]
+							epoch = calendar.timegm(convertToDateTime(release).timetuple())
+							timeResults[str(epoch)]=score
+							timeResults[str(calendar.timegm(convertToDateTime(data["results"][i]["release_date"]).timetuple()))] = score
 							gameResults.append(data["results"][i])
 						#otherwise, don't log it into the database, it is scoreless
 				
@@ -154,4 +201,9 @@ while offset<100:
 
 	offset+=100
 json.dump(gameResults, f)
+json.dump(timeResults, f2)
+f.close()
+f2.close()
+
+
 #print platformSet
