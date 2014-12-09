@@ -178,11 +178,11 @@
             .attr("class", "label")
             .text(function(d) {
                 return d.name;
-            }).on("click", function(d) {
+            }.on("click", function(d) {
                
                 var win = window.open(d.url, '_blank');
                 win.focus();
-            }.
+            });
             childEnterTransition.selectAll(".foreignObject")
                 .style("display", "none");
         
