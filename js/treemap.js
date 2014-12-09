@@ -156,7 +156,7 @@
                 .select(".background")
                 .style("stroke", "#000000")
                 .append("svg:title")
-                .text(function(d) { return  d.name + " " +d.score; });
+                .text(function(d) { return  d.name + " (" +d.score +")"; });
         })
         .on("mouseout", function() {
             d3.select(this)
