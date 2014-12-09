@@ -14,7 +14,7 @@
         .size([chartWidth, chartHeight])
         .sticky(true)
         .value(function(d) {
-            return d.size;
+            return d.score;
         });
 
     var chart = d3.select("#body")
@@ -24,14 +24,21 @@
         .append("svg:g");
 
     d3.json("data/games.json", function(data) {
-        var newData = d3.nest()
-        .key(function(d,i){return d.release_month;})
-        .entries(data);
+        var newData = {
+        "name": "2014",
+        "children": 
+            d3.nest()
+                .key(function(d,i){return d.release_month;})
+                .entries(data);
+        }
 
         var newDataStr = JSON.stringify(newData);
         newDataStr = newDataStr.replace("key", "name");
-        newDataStr = newDataStr.replace("values", "children")
+        newDataStr = newDataStr.replace("values", "children");
         console.log(newDataStr);
+        
+        data = JSON.parse(newDataStr);
+
         node = root = data;
         var nodes = treemap.nodes(root);
 
@@ -160,7 +167,7 @@
 
         d3.select("select").on("change", function() {
             console.log("select zoom(node)");
-            treemap.value(this.value == "size" ? size : count)
+            treemap.value(this.value == "size" ? score : count)
                 .nodes(root);
             zoom(node);
         });
@@ -170,7 +177,7 @@
 
 
     function size(d) {
-        return d.size;
+        return d.score;
     }
 
 
