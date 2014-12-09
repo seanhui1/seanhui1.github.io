@@ -149,16 +149,16 @@
             d3.select(this)
                 .attr("filter", "url(#outerDropShadow)")
                 .select(".background")
-                .style("stroke", "#000000");
+                .style("stroke", "#000000")
+                .append("svg:title")
+                .text(function(d) { return d.score; });
         })
         .on("mouseout", function() {
             d3.select(this)
                 .attr("filter", "")
                 .select(".background")
                 .style("stroke", "#FFFFFF");
-        })
-        .append("svg:title")
-        .text(function(d) { return d.score; });
+        });
         childEnterTransition.append("rect")
             .classed("background", true)
             .style("fill", function(d) {
