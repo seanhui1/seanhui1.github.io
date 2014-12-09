@@ -33,8 +33,8 @@
         }
 
         var newDataStr = JSON.stringify(newData);
-        newDataStr = newDataStr.replace("key", "name");
-        newDataStr = newDataStr.replace("values", "children");
+        newDataStr = newDataStr.replace(/key/g, "name");
+        newDataStr = newDataStr.replace(/values/g, "children");
         console.log(newDataStr);
         
         data = JSON.parse(newDataStr);
