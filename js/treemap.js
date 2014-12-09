@@ -166,6 +166,11 @@
                 return color(d.score);
             });
         childEnterTransition.append('foreignObject')
+             .on("click", function(d) {
+               
+                var win = window.open(d.url, '_blank');
+                win.focus();
+            })
             .attr("class", "foreignObject")
         
             .attr("width", function(d) {
@@ -202,11 +207,6 @@
                 return color(d.score);
             });
         childUpdateTransition.select(".foreignObject")
-            .on("click", function(d) {
-               
-                var win = window.open(d.url, '_blank');
-                win.focus();
-            })
             .attr("width", function(d) {
                 return Math.max(0.01, d.dx);
             })
@@ -221,12 +221,6 @@
         childrenCells.exit()
             .remove();
 
-        d3.select("select").on("change", function() {
-            console.log("select zoom(node)");
-            treemap.value(this.value == "size" ? score : count)
-                .nodes(root);
-            zoom(node);
-        });
 
         zoom(node);
     });
