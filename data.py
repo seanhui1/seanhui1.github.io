@@ -110,6 +110,9 @@ while offset<2000:
 
 			# These code snippets use an open-source library. http://unirest.io/python
 			if(mcPlat!=0):
+				print platform
+				print data["results"][i]["name"]
+				print mcPlat
 				mcResponse = unirest.post("https://byroredux-metacritic.p.mashape.com/search/game",
 				  headers={
 				    "X-Mashape-Key": "EH1nc2m4yDmshwgsHTweFUIFxXaJp1eJsYgjsnfs4eKkDP7LQy",
@@ -122,8 +125,6 @@ while offset<2000:
 				    "title": data["results"][i]["name"]
 				  }
 				)
-				print platform
-
 				#nothing was found within this query, retry with no specific platform
 				if not mcResponse.body.get('code'):
 					if(mcResponse.body['count'] == 0):
