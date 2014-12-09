@@ -93,7 +93,7 @@
             .append("g")
             .attr("class", "cell parent")
             .on("click", function(d) {
-                //zoom(d);
+                zoom(d);
             });
         parentEnterTransition.append("rect")
             .attr("width", function(d) {
@@ -142,7 +142,7 @@
             .append("g")
             .attr("class", "cell child")
             .on("click", function(d) {
-                zoom(node === d.parent ? root : d.parent);
+                //zoom(node === d.parent ? root : d.parent);
             })
             .on("mouseover", function() {
             this.parentNode.appendChild(this); // workaround for bringing elements to the front (ie z-index)
