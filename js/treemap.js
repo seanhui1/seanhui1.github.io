@@ -118,12 +118,16 @@
                 return "translate(" + d.dx + "," + d.y + ")";
             });
         parentUpdateTransition.select("rect")
+        .on("click", function(d) {
+            zoom(root);
+        })
             .attr("width", function(d) {
                 return Math.max(0.01, d.dx);
             })
             .attr("height", headerHeight)
             .style("fill", headerColor);
         parentUpdateTransition.select(".foreignObject")
+            
             .attr("width", function(d) {
                 return Math.max(0.01, d.dx);
             })
@@ -227,7 +231,7 @@
 
 
         zoom(node);
-    )};
+    });
 
 
     function size(d) {
